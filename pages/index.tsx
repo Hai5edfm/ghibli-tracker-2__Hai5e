@@ -21,8 +21,10 @@ const Home: NextPage = () => {
       <Navbar />
       <section>
         <MoviesState>
-          <MoviesList />
-          <TopMovies />
+          <main className="flex flex-col items-center justify-center">
+            <MoviesList />
+            <TopMovies />
+          </main>
         </MoviesState>
       </section>
     </>
