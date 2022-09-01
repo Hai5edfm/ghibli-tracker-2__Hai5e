@@ -1,5 +1,4 @@
-import React, { useRef, useState } from "react";
-import { useRouter } from "next/router";
+import React, { useRef } from "react";
 // Components
 import { MovieItem } from "./MovieItem";
 import { Filter } from "../navigation/Filter";
@@ -12,10 +11,10 @@ import { useGetFilms } from "../../hooks/useGetFilms";
 interface MoviesListProps {}
 
 const MoviesList: React.FC<MoviesListProps> = () => {
+  // Hooks API
   const { moviesList, setMoviesList } = useGetFilms();
-  const carousel: any = useRef(null);
 
-  // let pixels = `-translate-x-[${measure}px]`;
+  const carousel: any = useRef(null);
 
   return (
     <div className="my-7 md:w-[80%] w-full">
