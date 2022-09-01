@@ -1,40 +1,44 @@
+import React, { useRef, useState } from "react";
+import { useRouter } from "next/router";
+// Components
 import { MovieItem } from "./MovieItem";
 import { Filter } from "../navigation/Filter";
-import React, { useEffect, useContext, useState } from "react";
-import { useGetFilms } from "../../hooks/useGetFilms";
 import { Searchbar } from "../navigation/Searchbar";
+import { LeftButton } from "./LeftButton";
+import { RightButton } from "./RightButton";
+// Hooks
+import { useGetFilms } from "../../hooks/useGetFilms";
 
-
-// Context
-import MoviesContext from "../../context/Movies/MoviesContext";
-import { useRouter } from "next/router";
-import Link from "next/link";
 interface MoviesListProps {}
 
 const MoviesList: React.FC<MoviesListProps> = () => {
   const { moviesList, setMoviesList } = useGetFilms();
-  const router = useRouter();
-  // Todo: separate this to /services
+  const carousel: any = useRef(null);
+
+  // let pixels = `-translate-x-[${measure}px]`;
+
   return (
     <div className="my-7 md:w-[80%] w-full">
       <div className="flex flex-row justify-between px-5">
         <h1 className="px-2 text-2xl font-normal align-middle border-l-4 border-ghibli-dark">
           Movies
         </h1>
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center transition-all">
           <Filter />
           <Searchbar moviesList={moviesList} setMoviesList={setMoviesList} />
         </div>
       </div>
-      <div className="h-auto overflow-hidden overflow-x-auto ">
+      <div className={` relative h-auto `}>
+        <LeftButton carousel={carousel} />
+        <RightButton carousel={carousel} />
         <ul
-          className="flex flex-row  w-[4500px] p-2"
-          onClick={(e) => {
-            console.log(e.target);
-          }}
+          className={`flex flex-row transition-all scroll-smooth overflow-auto sm:overflow-hidden p-2 `}
+          ref={carousel}
         >
           {moviesList.length &&
-            moviesList.map((item: any) => <MovieItem item={item} key={item.id} />)}
+            moviesList.map((item: any) => (
+              <MovieItem item={item} key={item.id} />
+            ))}
         </ul>
       </div>
     </div>
