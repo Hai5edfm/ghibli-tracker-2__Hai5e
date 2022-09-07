@@ -1,11 +1,11 @@
 export default function searching(query: string, data: any) {
   let regEx = new RegExp(`${query}`, "i");
-  let matches = data.filter((item: any) => {
-    if (item.title.match(regEx)) {
-      item.classList.remove("hide");
+  data.forEach((item: any) => {
+    if (item.title.toLowerCase().includes(query.toLowerCase())) {
+      item;
     } else {
-      item.classList.add("hide");
+      false;
     }
+    return item;
   });
-  return matches;
 }
