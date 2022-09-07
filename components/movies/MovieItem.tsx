@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Image from "next/image";
 import { AiOutlineStar } from "react-icons/ai";
 import { FaEye } from "react-icons/fa";
@@ -6,10 +6,7 @@ import Link from "next/link";
 
 export function MovieItem({ item }: any) {
   return (
-    <li
-      className="flex flex-col items-center justify-between h-auto m-4 transition-transform bg-white rounded-lg hover:scale-110 w-60 shadow-aesthetic"
-      key={item.id}
-    >
+    <li className="flex flex-col items-center justify-between h-auto m-4 transition-transform bg-white rounded-lg transform-gpu hover:scale-110 w-fit shadow-aesthetic">
       <Image
         src={item.image}
         alt={item.title}

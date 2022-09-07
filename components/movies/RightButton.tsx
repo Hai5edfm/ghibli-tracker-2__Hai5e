@@ -11,7 +11,7 @@ export function RightButton({ carousel }: any) {
   return (
     <button
       onClick={handleNext}
-      className="sm:block hidden absolute z-10 rounded-full w-fit h-fit -right-12 top-[50%] text-4xl text-ghibli-light bg-transparent hover:text-ghibli-dark transition-color"
+      className="sm:block hidden absolute z-10 rounded-full w-fit h-fit -right-12 top-[50%] text-4xl text-ghibli-light bg-transparent hover:text-ghibli-dark transition-all"
     >
       <AiFillLeftCircle className="rotate-180" />
     </button>

@@ -1,11 +1,16 @@
 import React, { useContext, useEffect, useRef } from "react";
-import MoviesContext from "../../context/Movies/MoviesContext";
+import { MoviesContext } from "../../context/Movies/MoviesContext";
 import Image from "next/image";
 import { LeftButton } from "./LeftButton";
 import { RightButton } from "./RightButton";
+import Link from "next/link";
+import { useGetFilms } from "../../hooks/useGetFilms";
+import { TopMoviesSkeleton } from "./TopMoviesSkeleton";
 
 const TopMovies = () => {
   const { movies, getMovies } = useContext(MoviesContext);
+  const { isLoading, setIsLoading } = useGetFilms();
+
   useEffect(() => {
     getMovies();
   }, []);
@@ -18,16 +23,6 @@ const TopMovies = () => {
     .reverse();
 
   const carousel: any = useRef(null);
-  const handleNext = (e: any) => {
-    // Increase the pixel of translation
-    e.preventDefault();
-    carousel.current.scrollLeft += carousel.current.offsetWidth;
-  };
-  const handlePrevious = (e: any) => {
-    e.preventDefault();
-    // Decrease and reset
-    carousel.current.scrollLeft -= carousel.current.offsetWidth;
-  };
 
   return (
     <div className="md:w-[80%] w-full">
@@ -41,25 +36,30 @@ const TopMovies = () => {
           ref={carousel}
           className="flex flex-row overflow-auto sm:overflow-hidden scroll-smooth"
         >
+          {isLoading && <TopMoviesSkeleton />}
           {myArray.length > 0 &&
             myArray.map((item: any) => (
-              <li
+              <Link
+                href={"/movie/" + item.id}
                 key={item.id}
-                className="relative m-4 transition-transform cursor-pointer hover:scale-110"
+                className="max-w-none"
               >
-                <Image
-                  src={item.movie_banner}
-                  height={180}
-                  width={292}
-                  className="rounded-md max-w-none"
-                  alt={item.title}
-                />
-                <div className="absolute bottom-0 flex items-end w-full h-full transition-shadow rounded-b-md inner-shadow-bottom hover:inner-shadow-max ">
-                  <h1 className="w-40 p-2 font-bold text-left text-gray-100">
-                    {item.title}
-                  </h1>
-                </div>
-              </li>
+                <li className="relative m-4 transition-transform cursor-pointer hover:scale-110 max-w-none">
+                  <Image
+                    src={item.movie_banner}
+                    height={180}
+                    width={292}
+                    className="rounded-md"
+                    alt={item.title}
+                    layout="fixed"
+                  />
+                  <div className="absolute bottom-0 flex items-end w-full h-full transition-shadow rounded-b-md inner-shadow-bottom hover:inner-shadow-max ">
+                    <h1 className="w-40 p-2 font-bold text-left text-gray-100">
+                      {item.title}
+                    </h1>
+                  </div>
+                </li>
+              </Link>
             ))}
         </ul>
       </div>

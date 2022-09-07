@@ -1,19 +1,21 @@
-import React, { useRef } from "react";
+import React, { useContext, useRef, useState } from "react";
 // Components
 import { MovieItem } from "./MovieItem";
 import { Filter } from "../navigation/Filter";
 import { Searchbar } from "../navigation/Searchbar";
 import { LeftButton } from "./LeftButton";
 import { RightButton } from "./RightButton";
+import { LoaderSkeleton } from "../navigation/MovieListSkeleton";
 // Hooks
 import { useGetFilms } from "../../hooks/useGetFilms";
+import { SearchContext } from "../../context/Search/SearchContext";
 
 interface MoviesListProps {}
 
 const MoviesList: React.FC<MoviesListProps> = () => {
   // Hooks API
-  const { moviesList, setMoviesList } = useGetFilms();
-
+  const { moviesList, setMoviesList, isLoading, setIsLoading } = useGetFilms();
+  const { isMatch, setIsMatch }: any = useContext(SearchContext);
   const carousel: any = useRef(null);
 
   return (
@@ -23,7 +25,7 @@ const MoviesList: React.FC<MoviesListProps> = () => {
           Movies
         </h1>
         <div className="flex items-center justify-center transition-all">
-          <Filter />
+          <Filter moviesList={moviesList} setMoviesList={setMoviesList} />
           <Searchbar moviesList={moviesList} setMoviesList={setMoviesList} />
         </div>
       </div>
@@ -34,10 +36,19 @@ const MoviesList: React.FC<MoviesListProps> = () => {
           className={`flex flex-row transition-all scroll-smooth overflow-auto sm:overflow-hidden p-2 `}
           ref={carousel}
         >
-          {moviesList.length &&
-            moviesList.map((item: any) => (
-              <MovieItem item={item} key={item.id} />
-            ))}
+          {isLoading && <LoaderSkeleton />}
+          {moviesList.map((item: any) => {
+            if (!isMatch.length) {
+              return <MovieItem item={item} key={item.id} />;
+            }
+            if (isMatch.length > 0) {
+              if (item.title.toLowerCase().includes(isMatch.toLowerCase())) {
+                return <MovieItem item={item} key={item.id} />;
+              } else {
+                return null;
+              }
+            }
+          })}
         </ul>
       </div>
     </div>
