@@ -3,24 +3,19 @@ import React from "react";
 import { useState, useContext } from "react";
 import search from "../../utils/search";
 import { GoSearch } from "react-icons/go";
-// Context
-// import MoviesContext from "../../context/Movies/MoviesContext";
-// import { GET_MOVIES } from "../../context/types";
-// import MoviesList from "../movies/MoviesList";
+import { SearchContext } from "../../context/Search/SearchContext";
 
 function Searchbar({ moviesList, setMoviesList }: any) {
-  // const moviesContext = useContext(MoviesContext);
-  const [query, setQuery] = useState("");
   const [isActivated, setIsActivated] = useState(false);
-  const [moviesFiltered, setMoviesFiltered] = useState([]);
+  const { setIsMatch, isMatch }: any = useContext(SearchContext);
 
-  // Handles the input to makes querys
+  // Handles the input to makes queries
   const handleInput = (e: any) => {
+    e.preventDefault();
     const queryValue = e.target.value;
-    setQuery(queryValue);
-    search(query, moviesList);
-    console.log("results", search(query, moviesList));
+    setIsMatch(queryValue);
   };
+
   return (
     <div className="flex items-center justify-center cursor-pointer">
       <GoSearch
