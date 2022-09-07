@@ -6,6 +6,7 @@ import TopMovies from "../components/movies/TopMovies";
 import Navbar from "../components/navigation/Navbar";
 // Context/Global State
 import MoviesState from "../context/Movies/MoviesState";
+import { SearchState } from "../context/Search/SearchState";
 
 const Home: NextPage = () => {
   return (
@@ -20,12 +21,12 @@ const Home: NextPage = () => {
       </Head>
       <Navbar />
       <section>
-        <MoviesState>
+        <SearchState>
           <main className="flex flex-col items-center justify-center">
             <MoviesList />
             <TopMovies />
           </main>
-        </MoviesState>
+        </SearchState>
       </section>
     </>
   );

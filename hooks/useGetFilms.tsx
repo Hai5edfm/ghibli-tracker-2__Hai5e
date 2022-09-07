@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 
 const useGetFilms = () => {
   const [moviesList, setMoviesList] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   // Todo: separate this to /services
   useEffect(() => {
-    console.count("mounted");
+    setIsLoading(true);
     const controller = new AbortController();
     const signal = controller.signal;
     // todo: add environment variable
@@ -12,15 +13,15 @@ const useGetFilms = () => {
       .then((res) => res.json())
       .then((data) => {
         setMoviesList(data);
+        setIsLoading(false);
       })
       .catch((err) => console.log(err));
     return () => {
-      console.count("unmounted");
       controller.abort();
     };
   }, []);
 
-  return { moviesList, setMoviesList };
+  return { moviesList, setMoviesList, isLoading, setIsLoading };
 };
 
 export { useGetFilms };
