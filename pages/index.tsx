@@ -14,9 +14,10 @@ const Home: NextPage = () => {
       <Head>
         <title>Ghibli Tracker 2.0</title>
         <meta
-          name="description"
-          content="Welcome to Ghibli Tracker 2.0: Track and rate all your favorites movies!"
+          name="Welcome to Ghibli Tracker 2.0: Track and rate all your favorites movies!"
+          content=""
         />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
