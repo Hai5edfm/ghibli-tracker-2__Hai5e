@@ -25,30 +25,28 @@ export function Filter({ moviesList, setMoviesList }: any) {
             : "opacity-0 w-0 h-0 invisible p-0 m-0"
         }`}
       >
-        <button
-          className={`${
-            isActivated ? "w-auto" : "w-0 hidden h-0 m-0 p-0"
-          } cursor-pointer sm:my-0 m-2 text-slate-600 hover:text-slate-700 active:text-slate-700 `}
-          onClick={() => handleFilter("rt_score", "ascendant")}
-        >
-          Rate
-        </button>
-        <button
-          className={`${
-            isActivated ? "w-auto" : "w-0 hidden h-0 m-0 p-0"
-          } cursor-pointer sm:my-0 m-2 text-slate-600 hover:text-slate-700 active:text-slate-700 `}
-          onClick={() => handleFilter("release_date", "ascendant")}
-        >
-          Date
-        </button>
-        <button
-          className={`${
-            isActivated ? "w-auto" : "w-0 hidden h-0 m-0 p-0"
-          } cursor-pointer sm:my-0 m-2 text-slate-600 hover:text-slate-700 active:text-slate-700 `}
-          onClick={() => handleFilter("running_time", "ascendant")}
-        >
-          Duration
-        </button>
+        {isActivated && (
+          <>
+            <button
+              className={` cursor-pointer sm:my-0 m-2 text-slate-600 hover:text-slate-700 active:text-slate-700 `}
+              onClick={() => handleFilter("rt_score", "ascendant")}
+            >
+              Rate
+            </button>
+            <button
+              className={` cursor-pointer sm:my-0 m-2 text-slate-600 hover:text-slate-700 active:text-slate-700 `}
+              onClick={() => handleFilter("release_date", "ascendant")}
+            >
+              Date
+            </button>
+            <button
+              className={` cursor-pointer sm:my-0 m-2 text-slate-600 hover:text-slate-700 active:text-slate-700 `}
+              onClick={() => handleFilter("running_time", "ascendant")}
+            >
+              Duration
+            </button>
+          </>
+        )}
       </ul>
     </div>
   );
