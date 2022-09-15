@@ -4,7 +4,7 @@ import { AiOutlineStar } from "react-icons/ai";
 import { FaEye } from "react-icons/fa";
 import Link from "next/link";
 
-export function MovieItem({ item }: any) {
+export default function MovieItem({ item }: any) {
   return (
     <li className="flex flex-col items-center justify-between h-auto m-4 transition-transform bg-white rounded-lg transform-gpu hover:scale-110 w-fit shadow-aesthetic">
       <Image
@@ -13,6 +13,7 @@ export function MovieItem({ item }: any) {
         width={184}
         height={260}
         className="rounded-t-lg "
+        loading="lazy"
       />
 
       <h1 className="w-40 p-2 font-bold text-left text-gray-700">

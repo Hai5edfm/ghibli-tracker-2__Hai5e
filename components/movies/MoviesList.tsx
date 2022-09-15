@@ -1,6 +1,6 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { Suspense, useContext, useRef, useState } from "react";
 // Components
-import { MovieItem } from "./MovieItem";
+import MovieItem from "./MovieItem";
 import { Filter } from "../navigation/Filter";
 import { Searchbar } from "../navigation/Searchbar";
 import { LeftButton } from "./LeftButton";

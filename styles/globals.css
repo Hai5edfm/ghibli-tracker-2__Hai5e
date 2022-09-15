@@ -5,6 +5,7 @@
   font-family: "LexendDeca";
   src: url("../assets/fonts/LexendDeca-Bold.ttf");
   src: url("../assets/fonts/LexendDeca-Medium.ttf");
+  font-display: swap;
 }
 @layer base {
   html {

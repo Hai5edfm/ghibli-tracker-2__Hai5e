@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { FaUserAstronaut } from "react-icons/fa";
 
-const pointerArrow = `sm:after:content-[""] sm:after:h-0 sm:after:w-0 sm:after:border-b-[15px] sm:after:border-l-[10px] sm:after:border-r-[10px] sm:after:border-r-transparent sm:after:border-l-transparent sm:after:border-b-white sm:after:-top-3 sm:after:right-2 sm:after:absolute sm:after:border-solid`;
+const signTip = `sm:after:content-[""] sm:after:h-0 sm:after:w-0 sm:after:border-b-[15px] sm:after:border-l-[10px] sm:after:border-r-[10px] sm:after:border-r-transparent sm:after:border-l-transparent sm:after:border-b-white sm:after:-top-3 sm:after:right-2 sm:after:absolute sm:after:border-solid`;
 
 export function UserProfile({}) {
   const [isActive, setIsActive] = useState(false);
@@ -27,7 +27,7 @@ export function UserProfile({}) {
           isActive
             ? "opacity-100 w-[80%] p-4 h-screen sm:h-80 sm:w-fit"
             : " w-0 p-0 m-0 opacity-0 invisible"
-        } z-50 sm:right-5 ${pointerArrow} top-12 right-0  sm:top-14 absolute transition-all sm:rounded-md bg-white shadow-aesthetic`}
+        } z-50 sm:right-5 ${signTip} top-12 right-0  sm:top-14 absolute transition-all sm:rounded-md bg-white shadow-aesthetic`}
       >
         {isActive && (
           <>
