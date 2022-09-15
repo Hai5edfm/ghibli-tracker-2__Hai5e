@@ -13,7 +13,7 @@ const TopMovies = () => {
 
   useEffect(() => {
     getMovies();
-  }, []);
+  }, [getMovies]);
   const myArray = [...movies]
     .sort(
       (a: { rt_score: string }, b: { rt_score: string }) =>
