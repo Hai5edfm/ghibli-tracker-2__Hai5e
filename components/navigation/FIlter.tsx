@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { BiFilter } from "react-icons/bi";
 import { sortingMovies } from "../../utils/filter";
 
-export function Filter({ moviesList, setMoviesList }: any) {
+export default function Filter({ moviesList, setMoviesList }: any) {
   const [isActivated, setIsActivated] = useState(false);
 
   const handleFilter = (category: string, order: string) => {
