@@ -1,7 +1,7 @@
 import React, { Suspense, useContext, useRef, useState } from "react";
 // Components
 import MovieItem from "./MovieItem";
-import Filter from "../navigation/Filter";
+import { Filter } from "../navigation/Filter";
 import { Searchbar } from "../navigation/Searchbar";
 import { LeftButton } from "./LeftButton";
 import { RightButton } from "./RightButton";
@@ -10,9 +10,7 @@ import { LoaderSkeleton } from "../navigation/MovieListSkeleton";
 import { useGetFilms } from "../../hooks/useGetFilms";
 import { SearchContext } from "../../context/Search/SearchContext";
 
-interface MoviesListProps {}
-
-const MoviesList: React.FC<MoviesListProps> = () => {
+const MoviesList: React.FC = () => {
   // Hooks API
   const { moviesList, setMoviesList, isLoading, setIsLoading } = useGetFilms();
   const { isMatch, setIsMatch }: any = useContext(SearchContext);
