@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import { BiFilter } from "react-icons/bi";
 import { sortingMovies } from "../../utils/filter";
 
-export const Filter: React.FC = ({ moviesList, setMoviesList }: any) => {
+interface filterProps {
+  moviesList?: any;
+  setMoviesList?: any;
+}
+
+export function Filter({ moviesList, setMoviesList }: any) {
   const [isActivated, setIsActivated] = useState(false);
 
   const handleFilter = (category: string, order: string) => {
@@ -50,4 +55,4 @@ export const Filter: React.FC = ({ moviesList, setMoviesList }: any) => {
       </ul>
     </div>
   );
-};
+}

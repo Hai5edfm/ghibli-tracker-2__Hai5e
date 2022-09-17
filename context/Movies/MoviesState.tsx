@@ -6,7 +6,13 @@ import { useGetFilms } from "../../hooks/useGetFilms";
 // Types
 import { GET_MOVIES, GET_MOVIE } from "../types";
 
-const useMoviesState = ({ children }: any) => {
+interface moviesState {
+  moviesList?: Array<any>;
+  setMoviesList?: any;
+  isLoading?: any;
+  children?: React.ReactNode
+}
+const useMoviesState: React.FC<moviesState> = ({ children }) => {
   const { isLoading, setIsLoading } = useGetFilms();
   const initialState = {
     movies: [],

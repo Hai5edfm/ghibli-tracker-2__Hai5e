@@ -52,6 +52,7 @@ const TopMovies = () => {
                     className="rounded-md"
                     alt={item.title}
                     layout="fixed"
+                    priority={true}
                   />
                   <div className="absolute bottom-0 flex items-end w-full h-full transition-shadow rounded-b-md inner-shadow-bottom hover:inner-shadow-max ">
                     <h1 className="w-40 p-2 font-bold text-left text-gray-100">

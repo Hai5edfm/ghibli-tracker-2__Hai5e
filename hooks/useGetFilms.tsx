@@ -1,7 +1,10 @@
-import { useEffect, useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 import dynamic from "next/dynamic";
-
-const useGetFilms = () => {
+interface useGetFilmsProps {
+  moviesList: any;
+  setMoviesList: any;
+}
+function useGetFilms() {
   const [moviesList, setMoviesList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   // Todo: separate this to /services
@@ -13,8 +16,8 @@ const useGetFilms = () => {
     fetch("https://ghibliapi.herokuapp.com/films", { signal })
       .then((res) => res.json())
       .then((data) => {
-        setMoviesList(data);
         setIsLoading(false);
+        setMoviesList(data);
       })
       .catch((err) => console.log(err));
     return () => {
@@ -23,6 +26,6 @@ const useGetFilms = () => {
   }, []);
 
   return { moviesList, setMoviesList, isLoading, setIsLoading };
-};
+}
 
 export { useGetFilms };

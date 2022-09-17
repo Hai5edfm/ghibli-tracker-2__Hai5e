@@ -10,9 +10,9 @@ import { LoaderSkeleton } from "../navigation/MovieListSkeleton";
 import { useGetFilms } from "../../hooks/useGetFilms";
 import { SearchContext } from "../../context/Search/SearchContext";
 
-const MoviesList: React.FC = () => {
+function MoviesList() {
   // Hooks API
-  const { moviesList, setMoviesList, isLoading, setIsLoading } = useGetFilms();
+  const { moviesList, setMoviesList, isLoading } = useGetFilms();
   const { isMatch, setIsMatch }: any = useContext(SearchContext);
   const carousel: any = useRef(null);
 
@@ -24,7 +24,7 @@ const MoviesList: React.FC = () => {
         </h1>
         <div className="flex items-center justify-center transition-all">
           <Filter moviesList={moviesList} setMoviesList={setMoviesList} />
-          <Searchbar moviesList={moviesList} setMoviesList={setMoviesList} />
+          <Searchbar />
         </div>
       </div>
       <div className={` relative h-auto `}>
@@ -51,6 +51,6 @@ const MoviesList: React.FC = () => {
       </div>
     </div>
   );
-};
+}
 
 export default MoviesList;
