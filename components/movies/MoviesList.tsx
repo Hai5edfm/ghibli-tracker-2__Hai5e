@@ -12,7 +12,7 @@ import { SearchContext } from "../../context/Search/SearchContext";
 
 function MoviesList() {
   // Hooks API
-  const { moviesList, setMoviesList, isLoading } = useGetFilms();
+  const { moviesList, setMoviesList, isLoading }:any = useGetFilms();
   const { isMatch, setIsMatch }: any = useContext(SearchContext);
   const carousel: any = useRef(null);
 
