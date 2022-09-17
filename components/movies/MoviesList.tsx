@@ -23,7 +23,7 @@ function MoviesList() {
           Movies
         </h1>
         <div className="flex items-center justify-center transition-all">
-          <Filter moviesList={moviesList} setMoviesList={setMoviesList} />
+          {/* <Filter moviesList={moviesList} setMoviesList={setMoviesList} /> */}
           <Searchbar />
         </div>
       </div>
