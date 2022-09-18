@@ -4,6 +4,33 @@ This is a fork of our original project created in [Platzi Master SE-Squad C10](h
 ## Try the demo
 [Deployment on vercel](http://se-tracker.vercel.app)
 
+## Folder Structure
+If you want to contribute please follow the folder structure. 😊
+
+ghibli-tracker-2
+├── README.md
+├── node_modules
+├── package.json
+├── .gitignore
+├── next.config.js
+├── postcss.config.js
+├── tailwind.config.js
+├── tsconfig.json
+├── public
+│   ├── favicon.ico
+└── src
+    ├── assets
+    ├── components
+    │   ├── auth
+    │   ├── movies
+    │   ├── navigation
+    │   └── users
+    ├── helpers
+    ├── hooks
+    ├── pages
+    ├── services
+    ├── styles
+    ├── utils
 
 ## Technologies and Libraries
 Next.js
