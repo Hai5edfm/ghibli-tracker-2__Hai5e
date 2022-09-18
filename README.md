@@ -2,8 +2,8 @@
 ___This project is still in process.___
 
 
-
-https://user-images.githubusercontent.com/73669701/190923540-98cb5d10-73ed-47bd-b4da-fa15444442e3.mp4
+[ghibli-preview.webm](https://user-images.githubusercontent.com/73669701/190924415-825ba90d-7bbd-4d3d-9bf4-15582a63f2ff.webm)
+<!-- https://user-images.githubusercontent.com/73669701/190923540-98cb5d10-73ed-47bd-b4da-fa15444442e3.mp4 -->
 
 
 This is a fork of our original project created in [Platzi Master SE-Squad C10](https://github.com/C10-Ghibli-s/FE-Studio-Ghibli-Tracker)
