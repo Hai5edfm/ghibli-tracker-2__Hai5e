@@ -7,7 +7,7 @@ interface filterProps {
   setMoviesList?: any;
 }
 
-export function Filter({ moviesList, setMoviesList }: any) {
+export function Filter({ moviesList, setMoviesList }: any): any {
   const [isActivated, setIsActivated] = useState(false);
 
   const handleFilter = (category: string, order: string) => {
