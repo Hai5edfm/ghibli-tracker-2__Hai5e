@@ -2,7 +2,7 @@
 ___This project is still in process.___
 This is a fork of our original project created in [Platzi Master SE-Squad C10](https://github.com/C10-Ghibli-s/FE-Studio-Ghibli-Tracker)
 ## Try the demo
-[Deployment on vercel]()
+[Deployment on vercel](http://se-tracker.vercel.app)
 
 
 ## Technologies and Libraries
