@@ -29,6 +29,7 @@ const Home: NextPage = () => {
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1"
         />
+        <meta name="description" content="Movies catalog to rate and discover the best of Ghibli Studio" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Suspense fallback={<div>Loading...</div>}>
