@@ -8,8 +8,8 @@ import { useGetFilms } from "../../hooks/useGetFilms";
 import { TopMoviesSkeleton } from "./TopMoviesSkeleton";
 
 const TopMovies = () => {
-  const { movies, getMovies } = useContext(MoviesContext);
-  const { isLoading, setIsLoading } = useGetFilms();
+  const { movies, getMovies, isLoading, setIsLoading } =
+    useContext(MoviesContext);
 
   useEffect(() => {
     getMovies();
@@ -49,10 +49,9 @@ const TopMovies = () => {
                     src={item.movie_banner}
                     height={180}
                     width={292}
-                    className="rounded-md"
+                    className="rounded-md bg-slate-400"
                     alt={item.title}
                     layout="fixed"
-                    priority={true}
                   />
                   <div className="absolute bottom-0 flex items-end w-full h-full transition-shadow rounded-b-md inner-shadow-bottom hover:inner-shadow-max ">
                     <h1 className="w-40 p-2 font-bold text-left text-gray-100">

@@ -1,4 +1,10 @@
-import React, { Suspense, useContext, useRef, useState } from "react";
+import React, {
+  Suspense,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 // Components
 import MovieItem from "./MovieItem";
 // import { Filter } from "../navigation/Filter";
@@ -9,10 +15,18 @@ import { LoaderSkeleton } from "../navigation/MovieListSkeleton";
 // Hooks
 import { useGetFilms } from "../../hooks/useGetFilms";
 import { SearchContext } from "../../context/Search/SearchContext";
+import { MoviesContext } from "../../context/Movies/MoviesContext";
+import { Filter } from "../navigation/Filter";
 
 function MoviesList() {
   // Hooks API
-  const { moviesList, setMoviesList, isLoading }:any = useGetFilms();
+  // const { setMoviesList }: any = useGetFilms();
+  const { movies, getMovies, isLoading, setMovies } = useContext(MoviesContext);
+  const [list, setList] = useState([]);
+
+  useEffect(() => {
+    getMovies();
+  }, []);
   const { isMatch, setIsMatch }: any = useContext(SearchContext);
   const carousel: any = useRef(null);
 
@@ -23,7 +37,7 @@ function MoviesList() {
           Movies
         </h1>
         <div className="flex items-center justify-center transition-all">
-          {/* <Filter moviesList={moviesList} setMoviesList={setMoviesList} /> */}
+          <Filter moviesList={movies} setMoviesList={setMovies} />
           <Searchbar />
         </div>
       </div>
@@ -35,7 +49,7 @@ function MoviesList() {
           ref={carousel}
         >
           {isLoading && <LoaderSkeleton />}
-          {moviesList.map((item: any) => {
+          {movies.map((item: any) => {
             if (!isMatch.length) {
               return <MovieItem item={item} key={item.id} />;
             }

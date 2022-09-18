@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useState } from "react";
 
 import { MoviesContext } from "./MoviesContext";
 import { MoviesReducer } from "./MoviesReducer";
@@ -10,10 +10,10 @@ interface moviesState {
   moviesList?: Array<any>;
   setMoviesList?: any;
   isLoading?: any;
-  children?: React.ReactNode
+  children?: React.ReactNode;
 }
 const useMoviesState: React.FC<moviesState> = ({ children }) => {
-  const { isLoading, setIsLoading } = useGetFilms();
+  const [isLoading, setIsLoading] = useState(true);
   const initialState = {
     movies: [],
     selectedMovie: null,
@@ -23,7 +23,7 @@ const useMoviesState: React.FC<moviesState> = ({ children }) => {
 
   // Services
   const getMovies = () => {
-    setIsLoading(true);
+    isLoading;
     fetch("https://ghibliapi.herokuapp.com/films")
       .then((res) => res.json())
       .then((data) => {
@@ -34,7 +34,7 @@ const useMoviesState: React.FC<moviesState> = ({ children }) => {
   };
 
   const getMovie = (id: number | string) => {
-    setIsLoading(true);
+    isLoading;
     fetch("https://ghibliapi.herokuapp.com/films/" + id)
       .then((res) => res.json())
       .then((data) => {
@@ -44,12 +44,19 @@ const useMoviesState: React.FC<moviesState> = ({ children }) => {
       .catch((err) => console.log(err));
   };
 
+  const setMovies = (data: Array<any>) => {
+    dispatch({ payload: data, type: GET_MOVIES });
+  };
+
   // Context
   const context = {
     movies: state.movies,
     selectedMovie: state.selectedMovie,
     getMovies,
     getMovie,
+    isLoading,
+    setIsLoading,
+    setMovies,
   };
 
   return (

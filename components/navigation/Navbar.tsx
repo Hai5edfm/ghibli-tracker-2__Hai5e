@@ -15,14 +15,14 @@ const Navbar: React.FC = () => {
             Tracker
           </h1>
         </Link>
-        <div
+        {/* <div
           className="absolute text-white cursor-pointer right-14 top-3 hover:underline"
           onClick={() => {
             setOpenLoginModal(!openLoginModal);
           }}
         >
           Login
-        </div>
+        </div> */}
         <UserProfile />
       </div>
       {/* <Login
