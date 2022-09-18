@@ -6,7 +6,7 @@ This is a fork of our original project created in [Platzi Master SE-Squad C10](h
 
 ## Folder Structure
 If you want to contribute please follow the folder structure. 😊
-
+```
 ghibli-tracker-2
 ├── README.md
 ├── node_modules
@@ -31,13 +31,13 @@ ghibli-tracker-2
     ├── services
     ├── styles
     ├── utils
-
+```
 ## Technologies and Libraries
-Next.js
-React.js
-Tailwind
-React hook forms
-TypeScript
+- Next.js
+- React.js
+- Tailwind
+- React hook forms
+- TypeScript
 This project has an external API to make the queries.
 ## Getting Started
 
