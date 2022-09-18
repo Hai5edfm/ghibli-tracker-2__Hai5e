@@ -1,5 +1,5 @@
-# [Ghibli Tracker 2.0](http://se-tracker.vercel.app)
-___This project is still in process.___
+# Ghibli Tracker 2.0
+___This project is still in process.___ [Go to demo](http://se-tracker.vercel.app)
 
 
 [ghibli-preview.webm](https://user-images.githubusercontent.com/73669701/190924415-825ba90d-7bbd-4d3d-9bf4-15582a63f2ff.webm)
