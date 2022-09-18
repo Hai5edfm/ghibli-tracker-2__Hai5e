@@ -12,7 +12,7 @@ export default function MovieItem({ item }: any) {
         alt={item.title}
         width={184}
         height={260}
-        className="rounded-t-lg slate-400"
+        className="rounded-t-lg bg-slate-400"
       />
 
       <h1 className="w-40 p-2 font-bold text-left text-gray-700">
