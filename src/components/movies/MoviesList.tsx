@@ -1,10 +1,4 @@
-import React, {
-  Suspense,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { useContext, useEffect, useRef } from "react";
 // Components
 import MovieItem from "./MovieItem";
 // import { Filter } from "../navigation/Filter";
@@ -19,13 +13,11 @@ import { MoviesContext } from "../../context/Movies/MoviesContext";
 import { Filter } from "../navigation/Filter";
 
 function MoviesList() {
-  // Hooks API
-  // const { setMoviesList }: any = useGetFilms();
   const { movies, getMovies, isLoading, setMovies } = useContext(MoviesContext);
-  const [list, setList] = useState([]);
 
   useEffect(() => {
     getMovies();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const { isMatch, setIsMatch }: any = useContext(SearchContext);
   const carousel: any = useRef(null);
