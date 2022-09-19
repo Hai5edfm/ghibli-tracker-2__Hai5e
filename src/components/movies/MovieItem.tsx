@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { AiFillStar } from "react-icons/ai";
+import { AiOutlineClockCircle } from "react-icons/ai";
 import { FaEye } from "react-icons/fa";
 import Link from "next/link";
 
@@ -31,7 +32,10 @@ export default function MovieItem({ item }: any) {
           <p>{item.rt_score / 10}</p>
           <FaEye className="mx-1 mr-4 text-xl text-ghibli-light" />
         </div>
-        <div>{item.running_time}min</div>
+        <div className="flex items-center justify-center text-md">
+          <AiOutlineClockCircle className="mx-1 text-ghibli-light"/>
+          <p>{item.running_time}</p>
+        </div>
       </div>
 
       <Link href={"/movie/" + item.id}>
