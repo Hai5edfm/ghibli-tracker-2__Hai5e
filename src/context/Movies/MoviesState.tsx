@@ -1,28 +1,12 @@
 import React, { useReducer, useState } from "react";
-
 import { MoviesContext } from "./MoviesContext";
 import { MoviesReducer } from "./MoviesReducer";
-import { useGetFilms } from "../../hooks/useGetFilms";
 // Types
 import { GET_MOVIES, GET_MOVIE } from "../types";
 // Utils
-import { urlTrailers } from "../../utils/urlTrailers";
-import { arrayBuffer } from "stream/consumers";
-
-// create function that receives two arrays
-const mergingUrlinMovies = (movie: any, urls: Array<object>) => {
-  // and returns a new array with the elements of both arrays
-  let item = movie;
-  urls.map((url: any) => {
-    let lowerCase = url.title.toLowerCase();
-    if (lowerCase.includes(movie.title.toLowerCase())) {
-      item = { ...movie, ...url };
-      return item;
-    }
-    return null;
-  });
-  return item;
-};
+import { mergingUrlinMovies } from "../../utils/movieVideo";
+// Helpers
+import { urlTrailers } from "../../helpers/urlTrailers"
 
 interface moviesState {
   moviesList?: Array<any>;
