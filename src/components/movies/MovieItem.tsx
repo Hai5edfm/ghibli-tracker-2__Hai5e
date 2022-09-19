@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
 import Image from "next/image";
-import { AiOutlineStar } from "react-icons/ai";
+import { AiFillStar } from "react-icons/ai";
 import { FaEye } from "react-icons/fa";
 import Link from "next/link";
 
@@ -8,27 +8,30 @@ export default function MovieItem({ item }: any) {
   return (
     <li className="flex flex-col items-center justify-between h-auto m-4 transition-transform bg-white rounded-lg transform-gpu hover:scale-110 w-fit shadow-aesthetic">
       <Link href={"/movie/" + item.id}>
-        <Image
-          src={item.image}
-          alt={item.title}
-          width={184}
-          height={260}
-          className="rounded-t-lg cursor-pointer bg-slate-400"
-        />
+        <figure className="relative">
+          <Image
+            src={item.image}
+            alt={item.title}
+            width={184}
+            height={260}
+            className="rounded-t-lg cursor-pointer bg-slate-400"
+          />
+          <div className="absolute bottom-0 right-0 px-1 bg-blue-500 rounded-lg w-fit">
+            <p className="text-white">{item.release_date}</p>
+          </div>
+        </figure>
       </Link>
 
       <h1 className="w-40 p-2 font-bold text-left text-gray-700">
         {item.title}
       </h1>
-      <div className="flex items-stretch justify-between w-fit">
-        <div className="flex">
-          <AiOutlineStar className="text-xl text-ghibli-light" />
-          <AiOutlineStar className="text-xl text-ghibli-light" />
-          <AiOutlineStar className="text-xl text-ghibli-light" />
-          <AiOutlineStar className="text-xl text-ghibli-light" />
-          <AiOutlineStar className="text-xl text-ghibli-light" />
+      <div className="flex items-stretch justify-around mx-2 w-fit">
+        <div className="flex items-center justify-center">
+          <AiFillStar className="text-xl text-yellow-400" />
+          <p>{item.rt_score / 10}</p>
+          <FaEye className="mx-1 mr-4 text-xl text-ghibli-light" />
         </div>
-        <FaEye className="ml-4 text-xl text-ghibli-light" />
+        <div>{item.running_time}min</div>
       </div>
 
       <Link href={"/movie/" + item.id}>
