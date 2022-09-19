@@ -7,13 +7,15 @@ import Link from "next/link";
 export default function MovieItem({ item }: any) {
   return (
     <li className="flex flex-col items-center justify-between h-auto m-4 transition-transform bg-white rounded-lg transform-gpu hover:scale-110 w-fit shadow-aesthetic">
-      <Image
-        src={item.image}
-        alt={item.title}
-        width={184}
-        height={260}
-        className="rounded-t-lg bg-slate-400"
-      />
+      <Link href={"/movie/" + item.id}>
+        <Image
+          src={item.image}
+          alt={item.title}
+          width={184}
+          height={260}
+          className="rounded-t-lg cursor-pointer bg-slate-400"
+        />
+      </Link>
 
       <h1 className="w-40 p-2 font-bold text-left text-gray-700">
         {item.title}
