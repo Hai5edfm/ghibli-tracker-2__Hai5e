@@ -1,14 +1,17 @@
+import Head from "next/head";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { useContext, useEffect } from "react";
+// Components
 import { MoviesContext } from "../../context/Movies/MoviesContext";
 import TopMovies from "../../components/movies/TopMovies";
 import Navbar from "../../components/navigation/Navbar";
-//icons
+// Icons
 import { AiOutlineStar } from "react-icons/ai";
 import { FaEye } from "react-icons/fa";
-import Head from "next/head";
-import { BiFullscreen } from "react-icons/bi";
+
+
+
 export default function Movie() {
   const { selectedMovie, getMovie, getMovies } = useContext(MoviesContext);
   const router = useRouter();
@@ -16,9 +19,11 @@ export default function Movie() {
 
   useEffect(() => {
     getMovie(id);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
+  console.log(getMovie, 'object')
 
-  if (getMovie.length)
+  if (getMovie)
     return (
       <>
         <Head>
@@ -44,7 +49,7 @@ export default function Movie() {
             >
               <iframe
                 className="w-full h-full"
-                src="https://www.youtube.com/embed/ByXuk9QqQkk"
+                src={selectedMovie?.url_youtube}
                 title="YouTube video player"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               ></iframe>
@@ -60,7 +65,7 @@ export default function Movie() {
                 />
               </figure>
               <div className="w-full m-2 text-left sm:m-4 sm:order-2">
-                <p className="border-b-[2px] sm:p-1 p-0">
+                <p className="border-b-[2px] sm:p-1 p-0 max-w-[200px]">
                   Producer: {selectedMovie?.producer}
                 </p>
                 <p className="border-b-[2px] sm:p-1 p-0">

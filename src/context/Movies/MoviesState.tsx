@@ -5,6 +5,24 @@ import { MoviesReducer } from "./MoviesReducer";
 import { useGetFilms } from "../../hooks/useGetFilms";
 // Types
 import { GET_MOVIES, GET_MOVIE } from "../types";
+// Utils
+import { urlTrailers } from "../../utils/urlTrailers";
+import { arrayBuffer } from "stream/consumers";
+
+// create function that receives two arrays
+const mergingUrlinMovies = (movie: any, urls: Array<object>) => {
+  // and returns a new array with the elements of both arrays
+  let item = movie;
+  urls.map((url: any) => {
+    let lowerCase = url.title.toLowerCase();
+    if (lowerCase.includes(movie.title.toLowerCase())) {
+      item = { ...movie, ...url };
+      return item;
+    }
+    return null;
+  });
+  return item;
+};
 
 interface moviesState {
   moviesList?: Array<any>;
@@ -38,7 +56,8 @@ const useMoviesState: React.FC<moviesState> = ({ children }) => {
     fetch("https://ghibliapi.herokuapp.com/films/" + id)
       .then((res) => res.json())
       .then((data) => {
-        dispatch({ payload: data, type: GET_MOVIE });
+        let dataMerged = mergingUrlinMovies(data, urlTrailers);
+        dispatch({ payload: dataMerged, type: GET_MOVIE });
         setIsLoading(false);
       })
       .catch((err) => console.log(err));
