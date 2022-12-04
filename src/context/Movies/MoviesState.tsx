@@ -1,6 +1,7 @@
 import React, { useReducer, useState } from "react";
 import { MoviesContext } from "./MoviesContext";
 import { MoviesReducer } from "./MoviesReducer";
+import { getAllFilms, getFilm } from "../../data";
 // Types
 import { GET_MOVIES, GET_MOVIE } from "../types";
 // Utils
@@ -26,8 +27,7 @@ const useMoviesState: React.FC<moviesState> = ({ children }) => {
   // Services
   const getMovies = () => {
     isLoading;
-    fetch("https://ghibliapi.herokuapp.com/films")
-      .then((res) => res.json())
+    getAllFilms()
       .then((data) => {
         dispatch({ payload: data, type: GET_MOVIES });
         setIsLoading(false);
@@ -37,9 +37,9 @@ const useMoviesState: React.FC<moviesState> = ({ children }) => {
 
   const getMovie = (id: number | string) => {
     isLoading;
-    fetch("https://ghibliapi.herokuapp.com/films/" + id)
-      .then((res) => res.json())
+    getFilm(id)
       .then((data) => {
+        console.log(data)
         let dataMerged = mergingUrlinMovies(data, urlTrailers);
         dispatch({ payload: dataMerged, type: GET_MOVIE });
         setIsLoading(false);
