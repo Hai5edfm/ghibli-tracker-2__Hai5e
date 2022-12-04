@@ -1,27 +1,27 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 // Components
 import { MoviesContext } from "../../context/Movies/MoviesContext";
 import TopMovies from "../../components/movies/TopMovies";
 import Navbar from "../../components/navigation/Navbar";
 // Icons
-import { AiOutlineStar } from "react-icons/ai";
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { FaEye } from "react-icons/fa";
-
-
+import { RateMovieModal } from "../../components/movies/RateMovieModal";
 
 export default function Movie() {
   const { selectedMovie, getMovie, getMovies } = useContext(MoviesContext);
+  const [stateModal, setStateModal] = useState(false);
   const router = useRouter();
   const id = router.query.id as string;
 
   useEffect(() => {
     getMovie(id);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
-  console.log(getMovie, 'object')
+  console.log(getMovie, "object");
 
   if (getMovie)
     return (
@@ -34,6 +34,8 @@ export default function Movie() {
           />
           <link rel="icon" href="/favicon.ico" />
         </Head>
+
+        {stateModal && <RateMovieModal setStateModal={setStateModal} />}
         <Navbar />
         <main className="flex flex-col items-center">
           <div className="w-full sm:w-[80%] flex items-baseline">
@@ -83,12 +85,23 @@ export default function Movie() {
                 {/* {selectedMovie?.rt_score}
                  */}
                 <div className="flex items-center justify-center">
-                  <AiOutlineStar className="text-2xl text-ghibli-light" />
-                  <AiOutlineStar className="text-2xl text-ghibli-light" />
-                  <AiOutlineStar className="text-2xl text-ghibli-light" />
-                  <AiOutlineStar className="text-2xl text-ghibli-light" />
-                  <AiOutlineStar className="text-2xl text-ghibli-light" />
-                  <FaEye className="ml-4 text-2xl text-ghibli-light" />
+                  <div className="flex items-center justify-center">
+                    <AiFillStar className="text-3xl text-yellow-400 " />
+                    <p>{selectedMovie?.rt_score / 10}</p>
+                  </div>
+                  <div
+                    onClick={() => {
+                      setStateModal(true);
+                      document.body.style.overflow = "hidden";
+                    }}
+                    className="flex items-center justify-center p-1 mx-2 transition-colors rounded-full cursor-pointer hover:bg-slate-100"
+                  >
+                    <AiOutlineStar className="text-3xl text-yellow-400 " />
+                    {/* <p>{selectedMovie?.rt_score / 10}</p> */}
+                  </div>
+                  <div className="p-1 ml-4 text-2xl rounded-xl ">
+                    <FaEye className="text-3xl text-ghibli-light" />
+                  </div>
                 </div>
               </div>
               <a
