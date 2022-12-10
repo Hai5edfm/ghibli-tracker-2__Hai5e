@@ -39,7 +39,6 @@ const useMoviesState: React.FC<moviesState> = ({ children }) => {
     isLoading;
     getFilm(id)
       .then((data) => {
-        console.log(data)
         let dataMerged = mergingUrlinMovies(data, urlTrailers);
         dispatch({ payload: dataMerged, type: GET_MOVIE });
         setIsLoading(false);
