@@ -32,7 +32,7 @@ const useMoviesState: React.FC<moviesState> = ({ children }) => {
         dispatch({ payload: data, type: GET_MOVIES });
         setIsLoading(false);
       })
-      .catch((err) => console.log(err))
+      .catch((err) => console.log(err));
   };
 
   const getMovie = (id: number | string) => {
